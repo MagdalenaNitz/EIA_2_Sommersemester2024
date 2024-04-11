@@ -6,7 +6,7 @@ var eventInspector;
         window.addEventListener("mousemove", setInfoBox);
         window.addEventListener("click", logInfo);
         window.addEventListener("keyup", logInfo);
-        document.querySelector("#b1").addEventListener("click", customEvent);
+        document.querySelector("#button").addEventListener("click", customEvent);
     }
     document.addEventListener("mousemove", setInfoBox);
     let body = document.querySelector("body");
@@ -28,7 +28,7 @@ var eventInspector;
     function customEvent(_event) {
         console.log("button was pressed");
         let data = "This is my data.";
-        let button1 = document.querySelector('b1');
+        let button1 = document.querySelector('#button');
         let event = new CustomEvent("click", { bubbles: true, detail: { key: data } });
         button1.dispatchEvent(event);
         console.log(event + " event wurde erzeugt");

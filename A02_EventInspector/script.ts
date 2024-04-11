@@ -7,7 +7,7 @@ namespace eventInspector {
         window.addEventListener("mousemove", setInfoBox);
         window.addEventListener("click", logInfo);
         window.addEventListener("keyup", logInfo);
-        document.querySelector("#b1").addEventListener("click", customEvent);
+        document.querySelector("#button").addEventListener("click", customEvent);
     }
 
         document.addEventListener("mousemove", setInfoBox);
@@ -34,7 +34,7 @@ namespace eventInspector {
     function customEvent(_event: Event): void {
         console.log("button was pressed");
         let data: string = "This is my data.";
-        let button1: HTMLElement = <HTMLElement>document.querySelector('b1');
+        let button1: HTMLElement = <HTMLElement>document.querySelector('#button');
         let event: CustomEvent = new CustomEvent("click", { bubbles: true, detail: { key: data } });
         button1.dispatchEvent(event);
         console.log(event + " event wurde erzeugt");
