@@ -1,0 +1,39 @@
+h1 {
+    font-family: Arial, Helvetica, Arial, Helvetica, sans-serif;
+    color:rgb(149, 191, 202);
+    text-shadow: 6px;
+}
+.div0 {
+    position: absolute;
+    background-color: rgb(184, 157, 157);
+    width: calc(50vw - 15px);
+    height: calc(50vw - 15px);
+    left: 5px; 
+    border:1px solid rgb(0, 0, 0); 
+}
+
+.div1 {
+    position: absolute;
+    background-color: rgb(184, 157, 157);
+    width: calc(50vw - 15px);
+    height: calc(50vw - 15px);
+    right: 5px; 
+    border:1px solid rgb(0, 0, 0);  
+}
+
+.span {
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    background-color:rgb(149, 191, 202);
+    border: 1px solid rgb(30, 104, 134);
+    z-index: 100
+}
+
+.button {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    z-index: 100;
+    color:rgb(0, 0, 0)
+}
