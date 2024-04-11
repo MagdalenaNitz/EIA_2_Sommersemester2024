@@ -2,6 +2,7 @@ h1 {
     font-family: Arial, Helvetica, Arial, Helvetica, sans-serif;
     color:rgb(149, 191, 202);
     text-shadow: 6px;
+    text-decoration-line:underline;
 }
 .div0 {
     position: absolute;
@@ -9,7 +10,8 @@ h1 {
     width: calc(50vw - 15px);
     height: calc(50vw - 15px);
     left: 5px; 
-    border:1px solid rgb(0, 0, 0); 
+    border:1px solid rgb(0, 0, 0);
+    box-shadow: 2px 2px 3px rgb(38, 35, 35); 
 }
 
 .div1 {
@@ -18,16 +20,18 @@ h1 {
     width: calc(50vw - 15px);
     height: calc(50vw - 15px);
     right: 5px; 
-    border:1px solid rgb(0, 0, 0);  
+    border:1px solid rgb(0, 0, 0); 
+    box-shadow: 2px 2px 3px rgb(38, 35, 35); 
 }
 
 .span {
     position: fixed;
-    width: 300px;
-    height: 200px;
+    width: 200px;
+    height: 100px;
     background-color:rgb(149, 191, 202);
     border: 1px solid rgb(30, 104, 134);
-    z-index: 100
+    z-index: 100;
+    box-shadow: 2px 2px 3px rgb(67, 53, 53);
 }
 
 #button {
@@ -35,5 +39,7 @@ h1 {
     height: 50px;
     width: 100px;
     z-index: 100;
-    color:rgb(0, 0, 0)
+    color:rgb(0, 0, 0);
+    box-shadow: 2px 2px 3px black;
+    border: 1px solid rgb(19, 14, 14); 
 }
