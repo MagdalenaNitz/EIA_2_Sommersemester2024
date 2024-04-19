@@ -7,7 +7,7 @@ namespace eventInspector {
         window.addEventListener("mousemove", setInfoBox);
         window.addEventListener("click", logInfo);
         window.addEventListener("keyup", logInfo);
-        document.querySelector("#button").addEventListener("click", customEvent);
+        document.querySelector("button").addEventListener("click", customEvent);
     }
 
         document.addEventListener("mousemove", setInfoBox);
@@ -22,6 +22,7 @@ namespace eventInspector {
         let spanForMouseCursor: HTMLSpanElement = <HTMLSpanElement>document.querySelector("span");
         spanForMouseCursor.style.left = x + "px";
         spanForMouseCursor.style.top = y + "px";
+        spanForMouseCursor.innerHTML = "Mouse position: " + x + "<br> Mouse Position" + y + "<br>" + _event.target;
     }
 
     function logInfo(_event: Event): void {
@@ -34,9 +35,9 @@ namespace eventInspector {
     function customEvent(_event: Event): void {
         console.log("button was pressed");
         let data: string = "This is my data.";
-        let button1: HTMLElement = <HTMLElement>document.querySelector('#button');
+        let button: HTMLElement = <HTMLElement>document.querySelector("button");
         let event: CustomEvent = new CustomEvent("click", { bubbles: true, detail: { key: data } });
-        button1.dispatchEvent(event);
+        button.dispatchEvent(event);
         console.log(event + " event wurde erzeugt");
     }
 }

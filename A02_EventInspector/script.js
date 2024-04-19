@@ -6,7 +6,7 @@ var eventInspector;
         window.addEventListener("mousemove", setInfoBox);
         window.addEventListener("click", logInfo);
         window.addEventListener("keyup", logInfo);
-        document.querySelector("#button").addEventListener("click", customEvent);
+        document.querySelector("button").addEventListener("click", customEvent);
     }
     document.addEventListener("mousemove", setInfoBox);
     let body = document.querySelector("body");
@@ -18,6 +18,7 @@ var eventInspector;
         let spanForMouseCursor = document.querySelector("span");
         spanForMouseCursor.style.left = x + "px";
         spanForMouseCursor.style.top = y + "px";
+        spanForMouseCursor.innerHTML = "Mouse position: " + x + "<br> Mouse Position" + y + "<br>" + _event.target;
     }
     function logInfo(_event) {
         console.log(_event.type);
@@ -28,9 +29,9 @@ var eventInspector;
     function customEvent(_event) {
         console.log("button was pressed");
         let data = "This is my data.";
-        let button1 = document.querySelector('#button');
+        let button = document.querySelector("button");
         let event = new CustomEvent("click", { bubbles: true, detail: { key: data } });
-        button1.dispatchEvent(event);
+        button.dispatchEvent(event);
         console.log(event + " event wurde erzeugt");
     }
 })(eventInspector || (eventInspector = {}));
