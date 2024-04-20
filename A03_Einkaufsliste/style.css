@@ -1,0 +1,25 @@
+#einkauf {
+    text-align: center;
+}
+
+#überschrift {
+    text-align: center;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 8px;
+}
+
+.gesamt {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 40px;
+}
+
+.gesamt {
+    position: relative;
+}
