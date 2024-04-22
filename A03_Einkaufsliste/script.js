@@ -1,8 +1,8 @@
 "use strict";
 function myFunction() {
-    let x = document.getElementById("warensuche"); //Element mit der ID "warensuche" ird ausgewählt//
-    let y = document.getElementById("kategorie"); //Element mit der ID "kategorie" ird ausgewählt//
-    let z = document.getElementById("notiz"); //Element mit der ID "notiz" ird ausgewählt//
+    let x = document.getElementById("warensuche"); //Element mit der ID "warensuche" wird ausgewählt//
+    let y = document.getElementById("kategorie"); //Element mit der ID "kategorie" wird ausgewählt//
+    let z = document.getElementById("notiz"); //Element mit der ID "notiz" wird ausgewählt//
     console.log(x.value); //Wert von "warensuche" wird in der Konsole ausgegeben//
     console.log(y.value); //Wert von "kategorie" wird in der Konsole ausgegeben//
     console.log(z.value); //Wert von "notiz" wird in der Konsole ausgegeben//
