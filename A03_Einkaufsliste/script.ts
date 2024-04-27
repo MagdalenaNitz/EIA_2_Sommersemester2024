@@ -6,7 +6,16 @@ function myFunction() {
     console.log(y.value);       //Wert von "kategorie" wird in der Konsole ausgegeben//
     console.log(z.value);       //Wert von "notiz" wird in der Konsole ausgegeben//
 }
+function handleLoad (_event: Event): void {
+    console.log ("Start");
+    generateContent (data);
+}
 
+function generateContent (_data:Product []) {
+    for (let entry of _data) {
+        addEntry (entry)
+    }
+}
 //Änderung der Hintergrundfarbe und Angabe von Datum und Uhrzeit//
 function myCheck() { 
     let myElement = <HTMLElement>document.getElementById("feld01");     //Feld 1 wird ausgewählt//
