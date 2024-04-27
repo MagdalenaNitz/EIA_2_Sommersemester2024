@@ -13,4 +13,5 @@ var Einkaufsliste;
         { name: "Mascara", quantity: 1, lastBought: "30.12.2023", wasBought: true, comment: "wasserfest" }
     ];
 })(Einkaufsliste || (Einkaufsliste = {}));
+;
 //# sourceMappingURL=data.js.map

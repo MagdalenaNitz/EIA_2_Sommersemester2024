@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
+    <script src="data.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Einkaufsliste</title>    
 </head>
@@ -14,10 +15,10 @@
     </header>
 
     <div id="einkauf">
+        <legend>Ware hinzufügen</legend>
         <fieldset id="formular">
-            <input name="warensuche" id="warensuche" cols="50" rows="1" placeholder="Ware suchen"></input>
-            <p>Kategorie:
-            <select name="kategorie" id="kategorie">
+            <input type="text" id="itemInput" name="Datalist" list="options" placeholder="Ware suchen" requiredred/>
+            <datalist id="options">
                 <option value="Obst und Gemüse">Obst und Gemüse</option>
                 <option value="Milchprodukte">Milchprodukte (Milch, Joghurt, Käse)</option>
                 <option value="Backwaren">Backwaren</option>
@@ -27,167 +28,22 @@
                 <option value="Getränke">Getränke</option>
                 <option value="Haushaltsutensilien">Haushaltsutensilien</option>
                 <option value="Kosmetik">Kosmetik</option>
-            </select>
+            </datalist>
             </p>
-            Notiz:
-            <input name="notiz" id="notiz" cols="50" rows="1" ></input>
-            <button onclick="myFunction()">OK</button>
-        </fieldset>
-    </div>
+            <br> <hr/>
 
-<div class="all">   
-    <div id="feld01">
-        <fieldset id="feld001">
-            Obst und Gemüse
-            <fieldset>
-                <button onclick="myCheck()">check</button>
-                Banane
-                <select name="anzahl" id="anzahl01">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz01" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
+            Quantity
+            <input type="number" id="quantity" name="Stepper" step="1" min="1" max="100" value="1" required />
+            <br> <hr />
 
-    <div id="feld02">
-        <fieldset>
-            Milchprodukte (Milch, Joghurt, Käse)
-            <fieldset>
-                <button onclick="myCheck02()">check</button>
-                Joghurt
-                <select name="anzahl" id="anzahl02">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz02" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
+            Comment
+            <textarea name="comment" id="comment" rows="2" placeholder="Notiz..."></textarea>
+            <br> <hr />
 
-    <div id="feld03">
-        <fieldset>
-            Backwaren
-            <fieldset>
-                <button onclick="myCheck03()">check</button>
-                Schokoladenkuchen
-                <select name="anzahl" id="anzahl03">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz03" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
+            <input type="submit" value="Hinzufügen" />
 
-    <div id="feld04">
-        <fieldset>
-            Aufstriche
-            <fieldset>
-                <button onclick="myCheck04()">check</button>
-                Peanutbutter
-                <select name="anzahl" id="anzahl03">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz04" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
         </fieldset>
-    </div>
-
-    <div id="feld05">
-        <fieldset>
-            Fleisch und Fisch
-            <fieldset>
-                <button onclick="myCheck05()">check</button>
-                Forelle
-                <select name="anzahl" id="anzahl03">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz05" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
-
-    <div id="feld06">
-        <fieldset>
-            Süßigkeiten
-            <fieldset>
-                <button onclick="myCheck06()">check</button>
-                Schokobons
-                <select name="anzahl" id="anzahl03">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz06" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
-
-    <div id="feld07">
-        <fieldset>
-            Getränke
-            <fieldset>
-                <button onclick="myCheck07()">check</button>
-                Mineralwasser (classic)
-                <select name="anzahl" id="anzahl03">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz07" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
-
-    <div id="feld08">
-        <fieldset>
-            Haushaltsutensilien
-            <fieldset>
-                <button onclick="myCheck08()">check</button>
-                Waschmittel
-                <select name="anzahl" id="anzahl04">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz08" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
-
-    <div id="feld09">
-        <fieldset>
-            Kosmetik
-            <fieldset>
-                <button onclick="myCheck09()">check</button>
-                Mascara
-                <select name="anzahl" id="anzahl03">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <p>Zuletzt gekauft am:</p>
-                <textarea name="notiz" id="notiz09" cols="50" rows="1" placeholder="Notiz..."></textarea>
-            </fieldset>
-        </fieldset>
-    </div>
+    </div> 
 </div>
 </body>
 </html>

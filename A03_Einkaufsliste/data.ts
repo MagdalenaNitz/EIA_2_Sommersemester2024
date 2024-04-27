@@ -1,5 +1,5 @@
 namespace Einkaufsliste {
-    export interface Product {
+    export interface einkauf {
         name: string;
         quantity: number;
         lastBought: string;
@@ -7,7 +7,10 @@ namespace Einkaufsliste {
         comment: string;
     }
 
-    export let data:Product[] = [
+    export interface  Data {
+        [category: string]: einkauf[];
+    }
+    export let data: einkauf[]= [
         
             {name: "Banane", quantity: 1, lastBought: "14.02.2024", wasBought: true, comment: "noch leicht grün"}
         ,
@@ -34,6 +37,5 @@ namespace Einkaufsliste {
         ,
         
             {name: "Mascara", quantity: 1, lastBought: "30.12.2023", wasBought: true, comment: "wasserfest"}
-        ]
-    ;
-}
+        ]  
+};

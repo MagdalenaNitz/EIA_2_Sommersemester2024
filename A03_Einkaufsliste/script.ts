@@ -1,72 +1,83 @@
-function myFunction() {
-    let x = <HTMLInputElement>document.getElementById("warensuche");     //Element mit der ID "warensuche" ird ausgewählt//
-    let y = <HTMLInputElement>document.getElementById("kategorie");     //Element mit der ID "kategorie" ird ausgewählt//
-    let z = <HTMLInputElement>document.getElementById("notiz");         //Element mit der ID "notiz" ird ausgewählt//
-    console.log(x.value);       //Wert von "warensuche" wird in der Konsole ausgegeben//
-    console.log(y.value);       //Wert von "kategorie" wird in der Konsole ausgegeben//
-    console.log(z.value);       //Wert von "notiz" wird in der Konsole ausgegeben//
-}
-function handleLoad (_event: Event): void {
-    console.log ("Start");
-    generateContent (data);
-}
+namespace Einkaufsliste {
+    // Laden des Fensters
+    window.addEventListener("load", handleLoad);
 
-function generateContent (_data:Product []) {
-    for (let entry of _data) {
-        addEntry (entry)
+    // Funktion, die aufgerufen wird, wenn das Fenster geladen wird
+    function handleLoad(_event: Event): void {
+        console.log("Start");
+
+        // Änderungen abhören
+        const form = document.querySelector("form");
+        if (form) {
+            form.addEventListener("change", handleChange);
+        }
+
+        // Generiere Item Divs Funktion aufrufen
+        generateContent(data);
+    }
+
+    // Funktion zum Generieren von Inhalten
+    function generateContent(_data: einkauf[]): void {
+        // Füge für jedes Produkt einen Eintrag hinzu
+        for (let entry of _data) {
+            addEntry(entry);
+        }
+    }
+    // Exportierte Funktion zum Hinzufügen eines Eintrags
+    export function addEntry(_product: einkauf): void {
+    //Auf shoppingList zugreifen
+    const einkaufslisteDiv: HTMLDivElement = document.getElementById("Einkaufsliste") as HTMLDivElement;
+
+    //Dsa erstellte Element soll ein div werden mkt der Klasse entry
+    const entryDiv: HTMLDivElement = document.createElement("div");
+    entryDiv.classList.add("entry");
+
+    //HTML Schnipsel für das zu erstellende Div. Die Daten aus data.ts werden abgerufen und an die richtige Stelle gesetzt.
+    entryDiv.innerHTML = `
+        <div id="wasBought">
+            Bought?
+            <input type="checkbox" name="NextPurchase" ${_product.wasBought ? "checked" : ""}/> 
+        </div>
+        <div id="quantity"> 
+            Quantity
+            <input type="number" name="Stepper" step="1" min="1" max="100" value="${_product.quantity}" required />
+        </div>
+        <div id="comment"> 
+            Comment
+            <textarea name="comment" rows="2" placeholder="details...">${_product.comment}</textarea>
+        </div>
+        <div id="date"> 
+            Last bought: 
+            <input type="lastBought" name="today" value="${_product.lastBought}">
+        </div>
+        <div class="deleteButton">
+            <button> X </button>
+        </div>
+    `;
+
+    //Das neue Div wird dem SHippinglist Div als Kind untergeordnet
+    einkaufslisteDiv.appendChild(entryDiv);
+
+    //Button zum Löschen des Eintrags
+    const deleteButton: HTMLButtonElement = entryDiv.querySelector('.deleteButton > button') as HTMLButtonElement;
+    if (deleteButton) {
+        deleteButton.addEventListener('click', deleteEntry);
     }
 }
-//Änderung der Hintergrundfarbe und Angabe von Datum und Uhrzeit//
-function myCheck() { 
-    let myElement = <HTMLElement>document.getElementById("feld01");     //Feld 1 wird ausgewählt//
-    myElement.style.background = "lightgreen";     //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());      //aktuelles Datum und Uhrzeit werden in Konsole augegeben//
-}
+    // Funktion zum Verarbeiten von Formularänderungen
+    function handleChange(event: Event): void {
+        const input: HTMLInputElement = event.target as HTMLInputElement;
+        console.log(input.value);
+    }
 
-function myCheck02(){
-    let myElement = <HTMLElement>document.getElementById("feld02");     //Feld 2 wird ausgewählt//
-    myElement.style.background = "lightgreen";     //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
-}
-
-function myCheck03(){
-    let myElement = <HTMLElement>document.getElementById("feld03");   //Feld 3 wird ausgewählt//  
-    myElement.style.background = "lightgreen";      //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
-}
-
-function myCheck04(){
-    let myElement = <HTMLElement>document.getElementById("feld04");     //Feld 4 wird ausgewählt//
-    myElement.style.background = "lightgreen";      //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
-}
-
-function myCheck05(){
-    let myElement = <HTMLElement>document.getElementById("feld05");     //Feld 5 wird ausgewählt//
-    myElement.style.background = "lightgreen";      //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
-}
-
-function myCheck06(){
-    let myElement = <HTMLElement>document.getElementById("feld06");     //Feld 6 wird ausgewählt//
-    myElement.style.background = "lightgreen";      //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
-}
-
-function myCheck07(){
-    let myElement = <HTMLElement>document.getElementById("feld07");     //Feld 7 wird ausgewählt//
-    myElement.style.background = "lightgreen";      //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
-}
-
-function myCheck08(){
-    let myElement = <HTMLElement>document.getElementById("feld08");     //Feld 8 wird ausgewählt//
-    myElement.style.background = "lightgreen";      //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
-}
-
-    function myCheck09(){
-    let myElement = <HTMLElement>document.getElementById("feld09");     //Feld 9 wird ausgewählt//
-    myElement.style.background = "lightgreen";      //bei Clicken des Buttons, wird das Feld grün//
-    console.log(new Date().toLocaleString());
+    // Funktion zum Löschen eines Eintrags
+    function deleteEntry(event: MouseEvent): void {
+        const deleteButton: HTMLButtonElement = event.target as HTMLButtonElement;
+        const entryDiv: HTMLDivElement | null = deleteButton.closest('.entry') as HTMLDivElement | null;
+        if (entryDiv) {
+            entryDiv.remove();
+            console.log("deleteEntry wurde aufgerufen.")
+        }
+    }
+    
 }

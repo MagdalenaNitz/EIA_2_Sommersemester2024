@@ -12,14 +12,111 @@ body {
     margin: 8px;
 }
 
-.all {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 40px;
+#entry {
+    position: relative;
+    width: calc(60vw - 150px);
+    height: auto;
+    display: flex;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    background-color: rgb(193, 193, 193);
+    text-align: left;
+    padding: 5px;
+    margin: 10px;
+    flex-direction: row;
+}
+#einkauf {
+    position: absolute;
+    left :40px;
+    width: calc(30vw - 100px);
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid black;
+    text-align: left;
+    padding: 20px;
+    margin: 10px;
 }
 
-.all {
+#einkaufsliste {
+    position: absolute;
+    right :40px;
+    width: calc(60vw - 110px);
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid black;
+    text-align: left;
+    padding: 20px;
+    margin: 10px;
+}
+#entry{
+    position: absolute;
+    left: calc(50vw - 70px);
+    width: 150px;
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+    margin: 15px;
+}
+.entry {
+    border: solid black;
+    padding:15px;
+    border-radius: 20px;
+}
+
+#quantity, #date, #wasBought, #comment {
+    flex:1;
+    margin: 3px;
+    display: flex;
+    align-items: left;
+    border-radius: 5px;  
+    padding: 5px;
+    flex-direction: row;
+}
+#comment{
+    width: 250px;
+}
+#quantityt {
+    width: 150px;
+}
+
+#itemName {
+    font-size: 15pt;
+    text-align: left;
+    font-family: arial;
+}
+
+
+form {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteButton{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%; 
+    color: white; 
     position: relative;
+    font-weight: bold;
+    position: relative;
+    flex:1;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(0, 0, 0) 
+}
+
+legend {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+textarea {
+	width: calc(100% - 10px);
 }
