@@ -2,7 +2,7 @@ namespace Einkaufsliste {
     // Laden des Fensters
     window.addEventListener("load", handleLoad);
 
-    // Funktion, die aufgerufen wird, wenn das Fenster geladen wird
+    // Funktion wird aufgerufen, wenn das Fenster geladen wird
     function handleLoad(_event: Event): void {
         console.log("Start");
 
@@ -25,10 +25,10 @@ namespace Einkaufsliste {
     }
     // Exportierte Funktion zum Hinzufügen eines Eintrags
     export function addEntry(_product: einkauf): void {
-    //Auf shoppingList zugreifen
+    //Auf Einkaufsliste  zugreifen
     const einkaufslisteDiv: HTMLDivElement = document.getElementById("Einkaufsliste") as HTMLDivElement;
 
-    //Dsa erstellte Element soll ein div werden mkt der Klasse entry
+    //Dsa erstellte Element soll ein div werden mit der Klasse entry
     const entryDiv: HTMLDivElement = document.createElement("div");
     entryDiv.classList.add("entry");
 
@@ -55,7 +55,7 @@ namespace Einkaufsliste {
         </div>
     `;
 
-    //Das neue Div wird dem SHippinglist Div als Kind untergeordnet
+    //Das neue Div wird dem Einkaufslisten Div als Kind untergeordnet
     einkaufslisteDiv.appendChild(entryDiv);
 
     //Button zum Löschen des Eintrags
@@ -80,4 +80,4 @@ namespace Einkaufsliste {
         }
     }
     
-}
+} 
