@@ -35,7 +35,7 @@ namespace GenerativeKunst {
 
             let gradient: CanvasGradient = crc2.createLinearGradient(0,0,0, crc2.canvas.height); //Farbverlauf von oben nach unten
             gradient.addColorStop(0,"lightblue");
-            gradient.addColorStop(golden, "pink");
+            gradient.addColorStop(golden, "violet");
             gradient.addColorStop(1, "lightyellow");
 
             crc2.fillStyle = gradient;  //Anweisung, dass o.g. Farben benutzt werden sollen
