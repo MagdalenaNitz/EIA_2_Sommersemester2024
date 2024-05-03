@@ -3,7 +3,7 @@ var Einkaufsliste;
 (function (Einkaufsliste) {
     // Laden des Fensters
     window.addEventListener("load", handleLoad);
-    // Funktion, die aufgerufen wird, wenn das Fenster geladen wird
+    // Funktion wird aufgerufen, wenn das Fenster geladen wird
     function handleLoad(_event) {
         console.log("Start");
         // Änderungen abhören
@@ -23,13 +23,14 @@ var Einkaufsliste;
     }
     // Exportierte Funktion zum Hinzufügen eines Eintrags
     function addEntry(_product) {
-        //Auf shoppingList zugreifen
-        const einkaufslisteDiv = document.getElementById("Einkaufsliste");
-        //Dsa erstellte Element soll ein div werden mkt der Klasse entry
+        //Auf Einkaufsliste  zugreifen
+        const einkaufslisteDiv = document.getElementById("einkaufsliste");
+        //Dsa erstellte Element soll ein div werden mit der Klasse entry
         const entryDiv = document.createElement("div");
         entryDiv.classList.add("entry");
         //HTML Schnipsel für das zu erstellende Div. Die Daten aus data.ts werden abgerufen und an die richtige Stelle gesetzt.
         entryDiv.innerHTML = `
+        <p id= "itemName">${_product.name}</p>
         <div id="wasBought">
             Bought?
             <input type="checkbox" name="NextPurchase" ${_product.wasBought ? "checked" : ""}/> 
@@ -50,7 +51,7 @@ var Einkaufsliste;
             <button> X </button>
         </div>
     `;
-        //Das neue Div wird dem SHippinglist Div als Kind untergeordnet
+        //Das neue Div wird dem Einkaufslisten Div als Kind untergeordnet
         einkaufslisteDiv.appendChild(entryDiv);
         //Button zum Löschen des Eintrags
         const deleteButton = entryDiv.querySelector('.deleteButton > button');

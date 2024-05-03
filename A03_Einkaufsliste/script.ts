@@ -26,7 +26,7 @@ namespace Einkaufsliste {
     // Exportierte Funktion zum Hinzufügen eines Eintrags
     export function addEntry(_product: einkauf): void {
     //Auf Einkaufsliste  zugreifen
-    const einkaufslisteDiv: HTMLDivElement = document.getElementById("Einkaufsliste") as HTMLDivElement;
+    const einkaufslisteDiv: HTMLDivElement | null = document.getElementById("einkaufsliste") as HTMLDivElement;
 
     //Dsa erstellte Element soll ein div werden mit der Klasse entry
     const entryDiv: HTMLDivElement = document.createElement("div");
@@ -34,6 +34,7 @@ namespace Einkaufsliste {
 
     //HTML Schnipsel für das zu erstellende Div. Die Daten aus data.ts werden abgerufen und an die richtige Stelle gesetzt.
     entryDiv.innerHTML = `
+        <p id= "itemName">${_product.name}</p>
         <div id="wasBought">
             Bought?
             <input type="checkbox" name="NextPurchase" ${_product.wasBought ? "checked" : ""}/> 
@@ -59,7 +60,7 @@ namespace Einkaufsliste {
     einkaufslisteDiv.appendChild(entryDiv);
 
     //Button zum Löschen des Eintrags
-    const deleteButton: HTMLButtonElement = entryDiv.querySelector('.deleteButton > button') as HTMLButtonElement;
+    const deleteButton: HTMLButtonElement | null = entryDiv.querySelector('.deleteButton > button') as HTMLButtonElement;
     if (deleteButton) {
         deleteButton.addEventListener('click', deleteEntry);
     }
