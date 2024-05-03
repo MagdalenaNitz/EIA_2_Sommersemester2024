@@ -25,8 +25,7 @@ namespace GenerativeKunst {
             drawBubbles({x:100, y: 75});
             drawCloud({x:400, y: 280}, {x: 250, y: 75});                
             drawEllipse({x: 400, y: -150});
-            drawCurvedLines({ x: -500, y: 125 }, { x: 500, y: 200 }, 50, 50);
-            drawDiamond({ x: -80, y: 200 }, { x: 100, y: 50 });
+            drawCurvedLines(canvas.width, canvas.height, 100, 100);
             drawRandomShapes (canvas.width, canvas.height);
         }
 
@@ -66,6 +65,7 @@ namespace GenerativeKunst {
             crc2.beginPath();
             crc2.rotate(rotation);
             crc2.arc(0,0, radiusX, radiusY, 2* Math.PI);
+            crc2.lineWidth = 3; // Breite der Linie
             crc2.stroke();
             crc2.restore();
         }
@@ -128,43 +128,33 @@ namespace GenerativeKunst {
             crc2.restore();
         }
 
-        // Erstellen von geschwungener Linien
-        function drawCurvedLines(_start: Vector, _end: Vector, _frequency: number, _amplitude: number): void {
-            console.log("Curved Lines", _start, _end);
+        // Erstellen von geschwungener Linien mit zufälliger Position
+        function drawCurvedLines(canvasWidth: number, canvasHeight: number, _frequency: number, _amplitude: number): void {
+            console.log("Curved Lines");
+
+            // Zufällige Position für den Startpunkt der Linie
+            let startX: number = Math.random() * (canvasWidth * 0.2); //Startpunkt auf linke Hälfte begrenzt
+            let startY: number = Math.random() * canvasHeight;
 
             crc2.save();
             crc2.beginPath();
-            crc2.moveTo(_start.x, _start.y);
+            crc2.moveTo(startX, startY);
+
+            // Zufällige Position für den Endpunkt der Linie
+            let endX: number = Math.random() * canvasWidth;
 
             // Berechnung der Schrittweite basierend auf der Anzahl der Wellen
-            let dx: number = (_end.x - _start.x) / _frequency;
+            let dx: number = (endX - startX) / _frequency;
 
             for (let i: number = 0; i <= _frequency; i++) {
-                let x: number = _start.x + i * dx;
-                let y: number = _start.y + Math.sin((i / _frequency) * Math.PI * 2) * _amplitude; // Berechnung der Y-Position basierend auf Sinus-Funktion
+                let x: number = startX + i * dx;
+                let y: number = startY + Math.sin((i / _frequency) * Math.PI * 2) * _amplitude; // Berechnung der Y-Position basierend auf Sinus-Funktion
                 crc2.lineTo(x, y);
             }
 
             crc2.strokeStyle = "darkviolet"; // Farbe der Linie
-            crc2.lineWidth = 2; // Breite der Linie
+            crc2.lineWidth = 4; // Breite der Linie
             crc2.stroke();
-            crc2.restore();
-        }
-
-        // Funktion zum Zeichnen einer Raute
-        function drawDiamond(_position: Vector, _size: Vector): void {
-            console.log("Diamond", _position, _size);
-
-            crc2.save();
-            crc2.beginPath();
-            crc2.translate(_position.x, _position.y); // Verschiebung zum Mittelpunkt der Raute
-            crc2.moveTo(0, -_size.y / 2); // Startpunkt oben
-            crc2.lineTo(_size.x / 2, 0); // Rechte Spitze
-            crc2.lineTo(0, _size.y / 2); // Unten
-            crc2.lineTo(-_size.x / 2, 0); // Linke Spitze
-            crc2.closePath(); // Zurück zum Anfangspunkt
-            crc2.fillStyle = "darkgreen"; // Farbe der Raute
-            crc2.fill();
             crc2.restore();
         }
 
