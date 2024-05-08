@@ -4,6 +4,11 @@ var UebungL09;
     class Vector {
         x;
         y;
+        constructor() {
+            console.log("Constructor called");
+            this.x = 0;
+            this.y = 0;
+        }
         scale(_factor) {
             this.x *= _factor;
             this.y *= _factor;
@@ -11,6 +16,10 @@ var UebungL09;
         add(_addend) {
             this.x *= _addend.x;
             this.y *= _addend.y;
+        }
+        set(_x, _y) {
+            this.x *= _x;
+            this.y *= _y;
         }
     }
     let v1 = new Vector();
