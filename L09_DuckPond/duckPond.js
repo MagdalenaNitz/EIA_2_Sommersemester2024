@@ -10,7 +10,8 @@ var duckPond;
             return;
         duckPond.crc2 = canvas.getContext("2d");
         for (let i = 0; i < 4; i++) {
-            let cloud = new duckPond.Cloud();
+            let cloud = new duckPond.Cloud(100, 200);
+            cloud.draw;
             clouds.push(cloud);
         }
         drawBackground();

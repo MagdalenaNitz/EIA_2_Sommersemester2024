@@ -17,7 +17,8 @@ namespace duckPond {
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
         for (let i: number = 0; i<4; i++) {
-            let cloud: Cloud = new Cloud ();
+            let cloud: Cloud = new Cloud (100, 200);
+            cloud.draw;
             clouds.push(cloud);
         }
 

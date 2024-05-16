@@ -2,26 +2,32 @@
 var duckPond;
 (function (duckPond) {
     class Cloud {
-        position;
-        color;
-        size;
-        constructor() {
+        x;
+        y;
+        constructor(_x, _y) {
             console.log("Cloud Constructor");
+            this.x = _x;
+            this.y = _y;
         }
         move() {
-            console.log("Cloud move");
+            console.log("cloud move");
+            this.x += 1;
+            if (this.x > duckPond.crc2.canvas.width) {
+                this.x = -50;
+            }
         }
         draw() {
             console.log("Cloud draw");
             let nParticles = 30;
             let cloudWidth = 120;
             let cloudHeight = 40;
-            let xPosition = 40;
-            let yPosition = 50;
-            let random = duckPond.pseudoRandom(42);
+            let random = this.pseudoRandom(42);
+            duckPond.crc2.save();
+            duckPond.crc2.translate(this.x, this.y);
+            duckPond.crc2.restore();
             for (let i = 0; i < nParticles; i++) {
-                let x = xPosition + (i * (cloudWidth / nParticles));
-                let y = yPosition + (random() * cloudHeight);
+                let x = this.x + (i * (cloudWidth / nParticles));
+                let y = this.y + (random() * cloudHeight);
                 this.drawCloudParticle(x, y);
             }
         }
@@ -33,6 +39,7 @@ var duckPond;
             duckPond.crc2.beginPath();
             duckPond.crc2.arc(x, y, 15, 0, 2 * Math.PI);
             duckPond.crc2.fillStyle = gradient;
+            duckPond.crc2.fill();
             duckPond.crc2.restore();
         }
         pseudoRandom(seed) {
