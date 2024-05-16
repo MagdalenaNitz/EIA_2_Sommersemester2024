@@ -177,7 +177,7 @@ namespace duckPond {
 
     function drawHouse(): void{
         crc2.save();
-        crc2.translate(-180, 50); // Position des Hauses festlegen
+        crc2.translate(-180, 20); // Position des Hauses festlegen
 
         crc2.fillStyle = "brown"; // Farbe für das Haus festlegen
         crc2.beginPath();

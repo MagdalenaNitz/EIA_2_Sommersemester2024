@@ -146,7 +146,7 @@ var duckPond;
     }
     function drawHouse() {
         duckPond.crc2.save();
-        duckPond.crc2.translate(-180, 50); // Position des Hauses festlegen
+        duckPond.crc2.translate(-180, 20); // Position des Hauses festlegen
         duckPond.crc2.fillStyle = "brown"; // Farbe für das Haus festlegen
         duckPond.crc2.beginPath();
         duckPond.crc2.moveTo(0, 0); // Startpunkt des Hauses
