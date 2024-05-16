@@ -19,6 +19,7 @@ namespace duckPond {
         drawSun({ x: 70, y: 70});
         drawCloud({x: 120, y: 45}, {x:200, y:70});
         drawMountains();
+        drawTree(new Vector(170, 265), 70, 20, 40);
         drawLake();
     }
 
@@ -118,6 +119,18 @@ namespace duckPond {
         crc2.closePath();
         crc2.fill();
         crc2.restore();
+    }
+
+    function drawTree(position: Vector, trunkHeight: number, trunkWidth: number, crownRadius: number): void {
+    // Stamm zeichnen
+        crc2.fillStyle = "brown";
+        crc2.fillRect(position.x - trunkWidth / 2, position.y, trunkWidth, -trunkHeight);
+            
+    // Krone zeichnen
+        crc2.fillStyle = "green";
+        crc2.beginPath();
+        crc2.arc(position.x, position.y - trunkHeight, crownRadius, 0, Math.PI * 2);
+        crc2.fill();
     }
 
     function drawLake(): void {

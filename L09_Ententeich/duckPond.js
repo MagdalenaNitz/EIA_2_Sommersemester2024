@@ -12,6 +12,7 @@ var duckPond;
         drawSun({ x: 70, y: 70 });
         drawCloud({ x: 120, y: 45 }, { x: 200, y: 70 });
         drawMountains();
+        drawTree(new duckPond.Vector(170, 265), 70, 20, 40);
         drawLake();
     }
     function drawBackground() {
@@ -94,6 +95,16 @@ var duckPond;
         duckPond.crc2.closePath();
         duckPond.crc2.fill();
         duckPond.crc2.restore();
+    }
+    function drawTree(position, trunkHeight, trunkWidth, crownRadius) {
+        // Stamm zeichnen
+        duckPond.crc2.fillStyle = "brown";
+        duckPond.crc2.fillRect(position.x - trunkWidth / 2, position.y, trunkWidth, -trunkHeight);
+        // Krone zeichnen
+        duckPond.crc2.fillStyle = "green";
+        duckPond.crc2.beginPath();
+        duckPond.crc2.arc(position.x, position.y - trunkHeight, crownRadius, 0, Math.PI * 2);
+        duckPond.crc2.fill();
     }
     function drawLake() {
         let centerX = 150;
