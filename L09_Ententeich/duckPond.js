@@ -12,6 +12,7 @@ var duckPond;
         drawSun({ x: 70, y: 70 });
         drawCloud({ x: 120, y: 45 }, { x: 200, y: 70 });
         drawMountains();
+        drawLake();
     }
     function drawBackground() {
         console.log("Background");
@@ -62,7 +63,7 @@ var duckPond;
         let color = "#aaaaaa";
         duckPond.crc2.save();
         duckPond.crc2.beginPath();
-        duckPond.crc2.translate(0, 230);
+        duckPond.crc2.translate(0, 220);
         duckPond.crc2.fillStyle = color;
         duckPond.crc2.beginPath();
         duckPond.crc2.moveTo(-250, 0);
@@ -78,7 +79,7 @@ var duckPond;
         duckPond.crc2.restore();
         duckPond.crc2.save();
         duckPond.crc2.beginPath();
-        duckPond.crc2.translate(0, 240);
+        duckPond.crc2.translate(0, 230);
         duckPond.crc2.fillStyle = "grey";
         duckPond.crc2.beginPath();
         duckPond.crc2.moveTo(-250, 0);
@@ -91,6 +92,19 @@ var duckPond;
         duckPond.crc2.lineTo(50, -40);
         duckPond.crc2.lineTo(-50, -60);
         duckPond.crc2.closePath();
+        duckPond.crc2.fill();
+        duckPond.crc2.restore();
+    }
+    function drawLake() {
+        let centerX = 150;
+        let centerY = 350;
+        let radiusX = 190;
+        let radiusY = 80;
+        duckPond.crc2.save();
+        duckPond.crc2.beginPath();
+        duckPond.crc2.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+        duckPond.crc2.closePath();
+        duckPond.crc2.fillStyle = "darkblue";
         duckPond.crc2.fill();
         duckPond.crc2.restore();
     }

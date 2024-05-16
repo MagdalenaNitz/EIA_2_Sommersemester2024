@@ -17,8 +17,9 @@ namespace duckPond {
 
         drawBackground();
         drawSun({ x: 70, y: 70});
-        drawCloud({x:120, y: 45}, {x: 200, y: 70});
+        drawCloud({x: 120, y: 45}, {x:200, y:70});
         drawMountains();
+        drawLake();
     }
 
     function drawBackground(): void {
@@ -31,6 +32,7 @@ namespace duckPond {
 
         crc2.fillStyle = gradient; 
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+       
     }
 
     function drawSun(_position: Vector): void {
@@ -76,8 +78,7 @@ namespace duckPond {
             crc2.fill(particle); 
             crc2.restore();
             
-        }
-    }
+        }}
 
     function drawMountains(): void {
         console.log("Mountains");
@@ -85,7 +86,7 @@ namespace duckPond {
 
         crc2.save();
         crc2.beginPath();
-        crc2.translate(0,230);
+        crc2.translate(0,220);
         crc2.fillStyle = color;
         crc2.beginPath();
         crc2.moveTo(-250, 0); 
@@ -102,7 +103,7 @@ namespace duckPond {
 
         crc2.save();
         crc2.beginPath();
-        crc2.translate(0,240);
+        crc2.translate(0,230);
         crc2.fillStyle = "grey";
         crc2.beginPath();
         crc2.moveTo(-250, 0); 
@@ -118,6 +119,21 @@ namespace duckPond {
         crc2.fill();
         crc2.restore();
     }
-    
-}  
+
+    function drawLake(): void {
+
+        let centerX = 150;
+        let centerY = 350;
+        let radiusX = 190;
+        let radiusY = 80;
+
+        crc2.save();
+        crc2.beginPath();
+        crc2.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, 2* Math.PI);
+        crc2.closePath();
+        crc2.fillStyle = "darkblue";
+        crc2.fill();
+        crc2.restore();
+    }
+}
 

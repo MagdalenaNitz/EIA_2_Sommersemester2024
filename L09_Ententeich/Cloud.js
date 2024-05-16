@@ -1,6 +1,15 @@
 "use strict";
 var duckPond;
 (function (duckPond) {
+    class Vector {
+        x;
+        y;
+        constructor(_x, _y) {
+            this.x = _x;
+            this.y = _y;
+        }
+    }
+    duckPond.Vector = Vector;
     class Cloud {
         x;
         y;
@@ -16,38 +25,27 @@ var duckPond;
                 this.x = -50;
             }
         }
-        draw() {
-            console.log("Cloud draw");
-            let nParticles = 30;
-            let cloudWidth = 120;
-            let cloudHeight = 40;
-            let random = this.pseudoRandom(42);
-            duckPond.crc2.save();
-            duckPond.crc2.translate(this.x, this.y);
-            duckPond.crc2.restore();
-            for (let i = 0; i < nParticles; i++) {
-                let x = this.x + (i * (cloudWidth / nParticles));
-                let y = this.y + (random() * cloudHeight);
-                this.drawCloudParticle(x, y);
-            }
-        }
-        drawCloudParticle(x, y) {
-            let gradient = duckPond.crc2.createRadialGradient(x, y, 0, x, y, 15);
+        draw(_position, _size) {
+            console.log("Cloud", _position, _size);
+            let nParticles = 35; //Anzahl der Partikel
+            let radiusParticle = 40; //Radius einzelner Partikel
+            //Pfad erstellen
+            let particle = new Path2D();
+            let gradient = duckPond.crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
+            particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
             gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
             duckPond.crc2.save();
-            duckPond.crc2.beginPath();
-            duckPond.crc2.arc(x, y, 15, 0, 2 * Math.PI);
+            duckPond.crc2.translate(_position.x, _position.y);
             duckPond.crc2.fillStyle = gradient;
-            duckPond.crc2.fill();
-            duckPond.crc2.restore();
-        }
-        pseudoRandom(seed) {
-            let value = seed;
-            return function () {
-                value = (value * 9301 + 49297) % 233280;
-                return value / 233280;
-            };
+            for (let drawn = 0; drawn < nParticles; drawn++) {
+                duckPond.crc2.save();
+                let x = (Math.random() - 0.5) * _size.x; //Koordinatensystem verschieben - Zufallszahl zwischen -0.5 und 0.5
+                let y = (Math.random() * _size.y); //Zufallszahl zwischen 0 und 1
+                duckPond.crc2.translate(x, y); //Koordinatensystem an richtige Stelle schieben
+                duckPond.crc2.fill(particle);
+                duckPond.crc2.restore();
+            }
         }
     }
     duckPond.Cloud = Cloud;

@@ -1,5 +1,15 @@
 namespace duckPond {
     
+    export class Vector {
+        x: number;
+        y: number;
+
+        constructor(_x: number, _y: number) {
+            this.x = _x;
+            this.y = _y;
+        }
+    }
+    
     export class Cloud {
         x: number;
         y: number;
@@ -19,43 +29,33 @@ namespace duckPond {
         }
     }
 
-    draw(): void {
-        console.log("Cloud draw");
-
-        let nParticles: number = 30;
-        let cloudWidth: number = 120;
-        let cloudHeight: number = 40;
-        let random = this.pseudoRandom(42)
-
-        crc2.save();
-        crc2.translate(this.x, this.y);
-        crc2.restore();
-
-        for (let i = 0; i < nParticles; i++) {
-            let x = this.x + (i * (cloudWidth / nParticles));
-            let y = this.y + (random()* cloudHeight);
-            this.drawCloudParticle(x, y);
+    draw(_position: Vector, _size: Vector): void{
+            console.log("Cloud", _position, _size);
+    
+            let nParticles: number = 35;        //Anzahl der Partikel
+            let radiusParticle: number = 40;   //Radius einzelner Partikel
+    
+            //Pfad erstellen
+            let particle: Path2D = new Path2D();
+            let gradient: CanvasGradient = crc2.createRadialGradient (0, 0, 0, 0, 0, radiusParticle);
+    
+            particle.arc(0,0, radiusParticle, 0, 2*Math.PI);
+            gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
+            gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
+    
+            crc2.save();
+            crc2.translate(_position.x, _position.y);
+            crc2.fillStyle = gradient;
+    
+            for (let drawn: number = 0; drawn < nParticles; drawn++) {
+                crc2.save();
+                let x: number = (Math.random() - 0.5) * _size.x; //Koordinatensystem verschieben - Zufallszahl zwischen -0.5 und 0.5
+                let y: number = (Math.random() * _size.y); //Zufallszahl zwischen 0 und 1
+                crc2.translate(x, y);   //Koordinatensystem an richtige Stelle schieben
+                crc2.fill(particle); 
+                crc2.restore();
+                
+            }
         }
     }
-    
-    drawCloudParticle(x: number, y: number): void {
-        let gradient = crc2.createRadialGradient (x, y, 0, x,  y, 15);
-        
-        gradient.addColorStop(0,"HSLA(0, 100%, 100%, 0.5)");
-        gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)")
-    
-        crc2.save();
-        crc2.beginPath();
-        crc2.arc(x, y, 15, 0, 2 * Math.PI)
-        crc2.fillStyle = gradient;
-        crc2.fill();
-        crc2.restore();
-    }
-    pseudoRandom(seed: number): () => number {
-        let value = seed;
-        return function() {
-            value = (value * 9301 + 49297) % 233280;
-            return value / 233280;
-        };
-    }
-}}
+}
