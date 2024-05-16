@@ -14,6 +14,8 @@ var duckPond;
         drawMountains();
         drawTree(new duckPond.Vector(170, 265), 70, 20, 40);
         drawLake();
+        drawBush();
+        drawHouse();
     }
     function drawBackground() {
         console.log("Background");
@@ -117,6 +119,44 @@ var duckPond;
         duckPond.crc2.closePath();
         duckPond.crc2.fillStyle = "darkblue";
         duckPond.crc2.fill();
+        duckPond.crc2.restore();
+    }
+    function drawBush() {
+        duckPond.crc2.save();
+        duckPond.crc2.beginPath();
+        duckPond.crc2.translate(0, 270);
+        duckPond.crc2.fillStyle = "green";
+        duckPond.crc2.beginPath();
+        duckPond.crc2.moveTo(0, 0);
+        duckPond.crc2.lineTo(10, -20);
+        duckPond.crc2.lineTo(40, -35);
+        duckPond.crc2.lineTo(60, -45);
+        duckPond.crc2.lineTo(80, -40);
+        duckPond.crc2.lineTo(100, -30);
+        duckPond.crc2.lineTo(110, -5);
+        duckPond.crc2.lineTo(100, 0);
+        duckPond.crc2.lineTo(80, 5);
+        duckPond.crc2.lineTo(60, 5);
+        duckPond.crc2.lineTo(40, 5);
+        duckPond.crc2.lineTo(10, 5);
+        duckPond.crc2.lineTo(0, 0);
+        duckPond.crc2.closePath();
+        duckPond.crc2.fill();
+        duckPond.crc2.restore;
+    }
+    function drawHouse() {
+        duckPond.crc2.save();
+        duckPond.crc2.translate(-180, 50); // Position des Hauses festlegen
+        duckPond.crc2.fillStyle = "brown"; // Farbe für das Haus festlegen
+        duckPond.crc2.beginPath();
+        duckPond.crc2.moveTo(0, 0); // Startpunkt des Hauses
+        // Linien für das Haus zeichnen
+        duckPond.crc2.lineTo(0, -60);
+        duckPond.crc2.lineTo(40, -100);
+        duckPond.crc2.lineTo(80, -60);
+        duckPond.crc2.lineTo(80, 0);
+        duckPond.crc2.closePath();
+        duckPond.crc2.fill(); // Fülle das Haus mit Farbe
         duckPond.crc2.restore();
     }
 })(duckPond || (duckPond = {}));

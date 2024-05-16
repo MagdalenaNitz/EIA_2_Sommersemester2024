@@ -21,6 +21,8 @@ namespace duckPond {
         drawMountains();
         drawTree(new Vector(170, 265), 70, 20, 40);
         drawLake();
+        drawBush();
+        drawHouse();
     }
 
     function drawBackground(): void {
@@ -132,7 +134,7 @@ namespace duckPond {
         crc2.arc(position.x, position.y - trunkHeight, crownRadius, 0, Math.PI * 2);
         crc2.fill();
     }
-
+    
     function drawLake(): void {
 
         let centerX = 150;
@@ -146,6 +148,49 @@ namespace duckPond {
         crc2.closePath();
         crc2.fillStyle = "darkblue";
         crc2.fill();
+        crc2.restore();
+    }
+    function drawBush(): void {
+
+        crc2.save();
+        crc2.beginPath();
+        crc2.translate(0,270)
+        crc2.fillStyle = "green";
+        crc2.beginPath();
+        crc2.moveTo(0,0);
+        crc2.lineTo(10,-20);
+        crc2.lineTo(40,-35);
+        crc2.lineTo(60, -45);
+        crc2.lineTo(80, -40);
+        crc2.lineTo(100, -30)
+        crc2.lineTo(110,-5);
+        crc2.lineTo(100, 0);
+        crc2.lineTo(80, 5);
+        crc2.lineTo(60, 5);
+        crc2.lineTo(40, 5);
+        crc2.lineTo(10, 5);
+        crc2.lineTo(0, 0);
+        crc2.closePath();
+        crc2.fill();
+        crc2.restore;
+        }
+
+    function drawHouse(): void{
+        crc2.save();
+        crc2.translate(-180, 50); // Position des Hauses festlegen
+
+        crc2.fillStyle = "brown"; // Farbe für das Haus festlegen
+        crc2.beginPath();
+        crc2.moveTo(0, 0); // Startpunkt des Hauses
+
+        // Linien für das Haus zeichnen
+        crc2.lineTo(0, -60);
+        crc2.lineTo(40, -100);
+        crc2.lineTo(80, -60);
+        crc2.lineTo(80, 0);
+        crc2.closePath();
+
+        crc2.fill(); // Fülle das Haus mit Farbe
         crc2.restore();
     }
 }
