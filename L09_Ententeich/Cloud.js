@@ -1,15 +1,6 @@
 "use strict";
 var duckPond;
 (function (duckPond) {
-    class Vector {
-        x;
-        y;
-        constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
-        }
-    }
-    duckPond.Vector = Vector;
     class Cloud {
         x;
         y;
@@ -50,4 +41,4 @@ var duckPond;
     }
     duckPond.Cloud = Cloud;
 })(duckPond || (duckPond = {}));
-//# sourceMappingURL=Cloud.js.map
+//# sourceMappingURL=cloud.js.map

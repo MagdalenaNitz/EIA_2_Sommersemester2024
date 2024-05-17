@@ -11,11 +11,6 @@ var duckPond;
         drawBackground();
         drawSun({ x: 70, y: 70 });
         drawCloud({ x: 120, y: 45 }, { x: 200, y: 70 });
-        drawMountains();
-        drawTree(new duckPond.Vector(170, 265), 70, 20, 40);
-        drawLake();
-        drawBush();
-        drawHouse();
     }
     function drawBackground() {
         console.log("Background");
@@ -60,10 +55,16 @@ var duckPond;
             duckPond.crc2.fill(particle);
             duckPond.crc2.restore();
         }
+        drawMountains();
+        drawTree(new duckPond.Vector(170, 265), 70, 20, 40);
+        drawLake();
+        drawBush();
+        drawHouse();
     }
     function drawMountains() {
         console.log("Mountains");
         let color = "#aaaaaa";
+        //Berg 1 zeichnen
         duckPond.crc2.save();
         duckPond.crc2.beginPath();
         duckPond.crc2.translate(0, 220);
@@ -80,6 +81,7 @@ var duckPond;
         duckPond.crc2.closePath();
         duckPond.crc2.fill();
         duckPond.crc2.restore();
+        //Berg 2 zeichnen
         duckPond.crc2.save();
         duckPond.crc2.beginPath();
         duckPond.crc2.translate(0, 230);

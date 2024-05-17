@@ -3,7 +3,7 @@ namespace duckPond {
         x: number;
         y: number;
     }
-
+    
     window.addEventListener("load", handleLoad);
         export let crc2: CanvasRenderingContext2D;
         let golden: number = 0.62;
@@ -16,13 +16,8 @@ namespace duckPond {
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
         drawBackground();
-        drawSun({ x: 70, y: 70});
+        drawSun({x: 70, y: 70});
         drawCloud({x: 120, y: 45}, {x:200, y:70});
-        drawMountains();
-        drawTree(new Vector(170, 265), 70, 20, 40);
-        drawLake();
-        drawBush();
-        drawHouse();
     }
 
     function drawBackground(): void {
@@ -81,12 +76,18 @@ namespace duckPond {
             crc2.fill(particle); 
             crc2.restore();
             
-        }}
+        }
+        drawMountains();
+        drawTree(new Vector(170, 265), 70, 20, 40);
+        drawLake();
+        drawBush();
+        drawHouse();
+    }
 
     function drawMountains(): void {
         console.log("Mountains");
         let color: string = "#aaaaaa";
-
+        //Berg 1 zeichnen
         crc2.save();
         crc2.beginPath();
         crc2.translate(0,220);
@@ -103,7 +104,7 @@ namespace duckPond {
         crc2.closePath();
         crc2.fill();
         crc2.restore();
-
+        //Berg 2 zeichnen
         crc2.save();
         crc2.beginPath();
         crc2.translate(0,230);
@@ -150,6 +151,7 @@ namespace duckPond {
         crc2.fill();
         crc2.restore();
     }
+
     function drawBush(): void {
 
         crc2.save();
