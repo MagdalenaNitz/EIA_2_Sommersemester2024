@@ -24,4 +24,3 @@ var Ententeich;
     }
     Ententeich.Tree = Tree;
 })(Ententeich || (Ententeich = {}));
-//# sourceMappingURL=tree.js.map

@@ -94,7 +94,7 @@ namespace duckPond {
         //console.log("Background");
 
         let gradient: CanvasGradient = crc2.createLinearGradient(0,0,0, crc2.canvas.height);
-        gradient.addColorStop(0, "lightblue");
+        gradient.addColorStop(0, "blue");
         gradient.addColorStop(golden, "white");
         gradient.addColorStop(1, "green")
 
