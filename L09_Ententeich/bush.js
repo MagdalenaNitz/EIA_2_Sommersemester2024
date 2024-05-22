@@ -34,4 +34,4 @@ var duckPond;
     }
     duckPond.Bush = Bush;
 })(duckPond || (duckPond = {}));
-//# sourceMappingURL=bush.js.map
+//# sourceMappingURL=Bush.js.map

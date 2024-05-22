@@ -97,7 +97,7 @@ var duckPond;
         gradient.addColorStop(0, "HSLA(60, 100%, 80%, 1)");
         gradient.addColorStop(1, "HSLA(60, 100%, 50%, 0)");
         duckPond.crc2.save();
-        duckPond.crc2.save();
+        duckPond.crc2.translate(70, 70);
         duckPond.crc2.fillStyle = gradient;
         duckPond.crc2.arc(0, 0, r2, 0, 2 * Math.PI);
         duckPond.crc2.fill();

@@ -168,4 +168,4 @@ var duckPond;
     }
     duckPond.Bird = Bird;
 })(duckPond || (duckPond = {}));
-//# sourceMappingURL=bird.js.map
+//# sourceMappingURL=Bird.js.map

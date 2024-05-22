@@ -196,4 +196,4 @@ var duckPond;
     }
     duckPond.Duck = Duck;
 })(duckPond || (duckPond = {}));
-//# sourceMappingURL=duck.js.map
+//# sourceMappingURL=Duck.js.map

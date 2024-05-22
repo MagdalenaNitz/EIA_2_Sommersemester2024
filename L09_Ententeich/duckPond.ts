@@ -118,7 +118,7 @@ namespace duckPond {
             gradient.addColorStop(1, "HSLA(60, 100%, 50%, 0)");
 
             crc2.save();
-            crc2.save();
+            crc2.translate(70, 70);
             crc2.fillStyle = gradient;
             crc2.arc(0, 0, r2, 0, 2* Math.PI);
             crc2.fill();

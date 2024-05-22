@@ -1,4 +1,4 @@
-namespace duckPond {
+namespace EntenteichClasses {
     
     export class Bee {
         x: number;
@@ -18,7 +18,7 @@ namespace duckPond {
             
             if (randomX < 0) {
                 randomX *= -1; // Umdrehen der X-Komponente, um sicherzustellen, dass sie positiv ist
-            
+            }
         
         
             // Bewegung basierend auf der Richtung
@@ -38,7 +38,7 @@ namespace duckPond {
                 this.y = crc2.canvas.height;
             }
         }
-    }
+
         draw(): void {
             crc2.save();
             crc2.beginPath();
@@ -97,6 +97,4 @@ namespace duckPond {
 
             crc2.restore();
         }
-
-    }
-}
+    }}

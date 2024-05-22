@@ -1,2 +1,2 @@
 "use strict";
-//# sourceMappingURL=bee.js.map
+//# sourceMappingURL=Bee.js.map

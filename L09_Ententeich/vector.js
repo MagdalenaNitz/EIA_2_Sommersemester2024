@@ -22,4 +22,4 @@ var duckPond;
     }
     duckPond.Vector = Vector;
 })(duckPond || (duckPond = {}));
-//# sourceMappingURL=vector.js.map
+//# sourceMappingURL=Vector.js.map
