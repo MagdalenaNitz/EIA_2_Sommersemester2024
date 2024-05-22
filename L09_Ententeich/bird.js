@@ -9,7 +9,7 @@ var duckPond;
         direction;
         size;
         constructor(_x, _y, _xFlying, _yFlying, _size, _direction) {
-            //console.log("Bird Constructor")
+            //console.log("Duck Constructor")
             this.x = _x;
             this.y = _y;
             this.xFlying = _xFlying;

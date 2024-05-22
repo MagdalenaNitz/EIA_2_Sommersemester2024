@@ -4,20 +4,18 @@ var duckPond;
     class Vector {
         x;
         y;
-        constructor(x, y) {
-            this.x = x;
-            this.y = y;
+        constructor(_x, _y) {
+            this.set(_x, _y);
         }
-        add(vector) {
-            this.x += vector.x;
-            this.y += vector.y;
+        set(_x, _y) {
+            this.x = _x;
+            this.y = _y;
         }
-        scale(scalar) {
-            this.x *= scalar;
-            this.y *= scalar;
-        }
-        copy() {
-            return new Vector(this.x, this.y);
+        normalize() {
+            let length = Math.sqrt(this.x * this.x + this.y * this.y);
+            this.x /= length;
+            this.y /= length;
+            return this;
         }
     }
     duckPond.Vector = Vector;

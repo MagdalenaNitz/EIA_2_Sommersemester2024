@@ -55,7 +55,7 @@ namespace duckPond {
             let bee: Bee = new Bee (10, 600, "yellow");
 
             bees.push(bee);
-        }
+        } 
 
         drawBackground();
         setInterval(animate, 40);
