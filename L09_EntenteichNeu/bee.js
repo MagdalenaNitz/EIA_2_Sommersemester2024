@@ -20,10 +20,37 @@ var Ententeich;
         }
         draw() {
             Ententeich.crc2.save();
-            Ententeich.crc2.beginPath();
             Ententeich.crc2.translate(this.x, this.y);
+            // Körper
+            Ententeich.crc2.beginPath();
             Ententeich.crc2.fillStyle = this.color;
-            Ententeich.crc2.ellipse(35, 35, 10, 5, 0, 0, 2 * Math.PI);
+            Ententeich.crc2.ellipse(0, 0, 10, 5, 0, 0, 2 * Math.PI);
+            Ententeich.crc2.fill();
+            Ententeich.crc2.closePath();
+            // Streifen
+            Ententeich.crc2.beginPath();
+            Ententeich.crc2.fillStyle = "black";
+            Ententeich.crc2.ellipse(-2, 0, 2, 5, 0, 0, 2 * Math.PI);
+            Ententeich.crc2.fill();
+            Ententeich.crc2.closePath();
+            Ententeich.crc2.beginPath();
+            Ententeich.crc2.ellipse(2, 0, 2, 5, 0, 0, 2 * Math.PI);
+            Ententeich.crc2.fill();
+            Ententeich.crc2.closePath();
+            // Kopf
+            Ententeich.crc2.beginPath();
+            Ententeich.crc2.fillStyle = "black";
+            Ententeich.crc2.arc(-10, 0, 3, 0, 2 * Math.PI);
+            Ententeich.crc2.fill();
+            Ententeich.crc2.closePath();
+            // Flügel
+            Ententeich.crc2.beginPath();
+            Ententeich.crc2.fillStyle = "rgba(255, 255, 255, 0.6)";
+            Ententeich.crc2.ellipse(0, -5, 3, 8, Math.PI / 4, 0, 2 * Math.PI);
+            Ententeich.crc2.fill();
+            Ententeich.crc2.closePath();
+            Ententeich.crc2.beginPath();
+            Ententeich.crc2.ellipse(0, 5, 3, 8, -Math.PI / 4, 0, 2 * Math.PI);
             Ententeich.crc2.fill();
             Ententeich.crc2.closePath();
             Ententeich.crc2.restore();

@@ -1,5 +1,5 @@
 namespace Ententeich {
-    export class Bee {
+    export class Bird {
         x: number;
         y: number;
         color: string;
@@ -13,8 +13,8 @@ namespace Ententeich {
         }
 
         move() {
-            this.x += 1;
-            this.y -= 1;
+            this.x += 2; // Geschwindigkeit des Vogels
+            this.y += Math.sin(this.x * 0.05) * 2; // sanfte Auf- und Abbewegung
             if (this.x > crc2.canvas.width) {
                 this.x = 0;
             }
@@ -27,38 +27,32 @@ namespace Ententeich {
             // Körper
             crc2.beginPath();
             crc2.fillStyle = this.color;
-            crc2.ellipse(0, 0, 10, 5, 0, 0, 2 * Math.PI);
-            crc2.fill();
-            crc2.closePath();
-
-            // Streifen
-            crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.ellipse(-2, 0, 2, 5, 0, 0, 2 * Math.PI);
-            crc2.fill();
-            crc2.closePath();
-
-            crc2.beginPath();
-            crc2.ellipse(2, 0, 2, 5, 0, 0, 2 * Math.PI);
+            crc2.ellipse(0, 0, 11, 8, 0, 0, 2 * Math.PI); // schlankere Form
             crc2.fill();
             crc2.closePath();
 
             // Kopf
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.arc(-10, 0, 3, 0, 2 * Math.PI);
+            crc2.arc(13, -3, 4, 0, 2 * Math.PI); // kleinerer Kopf
+            crc2.fill();
+            crc2.closePath();
+
+            // Schnabel
+            crc2.beginPath();
+            crc2.fillStyle = "orange";
+            crc2.moveTo(12, -3);
+            crc2.lineTo(15, -5);
+            crc2.lineTo(12, -7);
             crc2.fill();
             crc2.closePath();
 
             // Flügel
             crc2.beginPath();
-            crc2.fillStyle = "rgba(255, 255, 255, 0.6)";
-            crc2.ellipse(0, -5, 3, 8, Math.PI / 4, 0, 2 * Math.PI);
-            crc2.fill();
-            crc2.closePath();
-
-            crc2.beginPath();
-            crc2.ellipse(0, 5, 3, 8, -Math.PI / 4, 0, 2 * Math.PI);
+            crc2.fillStyle = this.color;
+            crc2.moveTo(-7, 0);
+            crc2.lineTo(-17, -9); // längere Flügel
+            crc2.lineTo(-9, -4); // veränderte Positionierung
+            crc2.lineTo(-17, 0);
             crc2.fill();
             crc2.closePath();
 

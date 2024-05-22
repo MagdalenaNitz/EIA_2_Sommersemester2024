@@ -10,10 +10,10 @@ var Ententeich;
         }
         draw() {
             let numberOfParticles = 50;
-            let cloudWidth = 80;
+            let cloudWidth = 90;
             let cloudHeight = 70;
-            let xPosition = 310;
-            let yPosition = 590;
+            let xPosition = 290;
+            let yPosition = 640;
             let random = Ententeich.pseudoRandom(42);
             for (let i = 0; i < numberOfParticles; i++) {
                 let x = xPosition + (i * (cloudWidth / numberOfParticles));

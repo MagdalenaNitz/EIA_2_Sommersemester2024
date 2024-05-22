@@ -1,6 +1,6 @@
 "use strict";
-var duckPond;
-(function (duckPond) {
+var Ententeich;
+(function (Ententeich) {
     class Vector {
         x;
         y;
@@ -18,6 +18,6 @@ var duckPond;
             return this;
         }
     }
-    duckPond.Vector = Vector;
-})(duckPond || (duckPond = {}));
+    Ententeich.Vector = Vector;
+})(Ententeich || (Ententeich = {}));
 //# sourceMappingURL=Vector.js.map

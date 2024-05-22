@@ -10,10 +10,10 @@ namespace Ententeich {
 
         draw(): void {
             let numberOfParticles: number = 50;
-            let cloudWidth: number = 80;
+            let cloudWidth: number = 90;
             let cloudHeight: number = 70;
-            let xPosition: number = 310;
-            let yPosition: number = 590;
+            let xPosition: number = 290;
+            let yPosition: number = 640;
             let random = pseudoRandom(42)
 
             for (let i = 0; i < numberOfParticles; i++) {
