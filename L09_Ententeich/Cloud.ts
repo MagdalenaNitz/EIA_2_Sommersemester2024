@@ -1,17 +1,17 @@
 namespace duckPond {
-    
+
     export class Cloud {
         x: number;
         y: number;
 
     constructor (_x: number, _y: number){
-        console.log ("Cloud Constructor")
+        //console.log ("Cloud Constructor")
         this.x = _x;
         this.y = _y;
     }
 
     move(): void {
-        console.log("cloud move");
+        // console.log("cloud move");
         this.x +=1;
 
         if (this.x > crc2.canvas.width) {
@@ -22,7 +22,7 @@ namespace duckPond {
     draw(_position: Vector, _size: Vector): void{
             console.log("Cloud", _position, _size);
     
-            let nParticles: number = 35;        //Anzahl der Partikel
+            let nParticles: number = 30;        //Anzahl der Partikel
             let radiusParticle: number = 40;   //Radius einzelner Partikel
     
             //Pfad erstellen

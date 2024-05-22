@@ -3,66 +3,107 @@ var duckPond;
 (function (duckPond) {
     window.addEventListener("load", handleLoad);
     let golden = 0.62;
+    let clouds = [];
+    let ducks = [];
+    let bushes = [];
+    let bees = [];
+    let birds = [];
     function handleLoad(_event) {
         let canvas = document.querySelector("canvas");
         if (!canvas)
             return;
         duckPond.crc2 = canvas.getContext("2d");
+        for (let i = 0; i < 4; i++) {
+            let cloud = new duckPond.Cloud(Math.random() * 200, Math.random() * 150);
+            clouds.push(cloud);
+        }
+        for (let i = 0; i < 6; i++) {
+            let x = 100 + Math.random() * 200;
+            let y = 340 + Math.random() * 70;
+            let xTail = 70 + Math.random() * 70;
+            let yTail = 350 + Math.random() * 100;
+            let xStanding = 200 + Math.random() * 300;
+            let yStanding = 450 + Math.random() * 80;
+            let duck = new duckPond.Duck(x, y, xStanding, yStanding, xTail, yTail, "lightbrown");
+            ducks.push(duck);
+        }
+        for (let i = 0; i < 4; i++) {
+            let randomX = Math.random() * 2 - 1;
+            let randomY = 450 + Math.random() * 200;
+            let xFlying = 70 + Math.random() * 200;
+            let yFlying = 350 + Math.random() * 100;
+            let bird = new duckPond.Bird(Math.random() * 200, randomY, xFlying, yFlying, 0.5, new duckPond.Vector(randomX, 0));
+            if (randomY >= 400 && randomY <= 600) {
+                birds.push(bird);
+            }
+        }
+        let bush = new duckPond.Bush(310, 220);
+        console.log(bush);
+        bushes.push(bush);
+        for (let i = 0; i < 7; i++) {
+            let randomX = Math.random() * 2 - 1;
+            let randomY = Math.random() * 2 - 1;
+            let bee = new Bee(Math.random() * 500, Math.random() * 500, 0.5, new duckPond.Vector(randomX, randomY));
+            bees.push(bee);
+        }
         drawBackground();
-        drawSun({ x: 70, y: 70 });
-        drawCloud({ x: 120, y: 45 }, { x: 200, y: 70 });
+        setInterval(animate, 40);
+    }
+    function animate() {
+        console.log("animate");
+        drawBackground();
+        for (let i = 0; i < 4; i++) {
+            clouds[i].move();
+            clouds[i].draw(new duckPond.Vector(120, 45), new duckPond.Vector(200, 70));
+        }
+        for (let i = 0; i < 6; i++) {
+            ducks[i].move();
+            ducks[i].draw();
+            ducks[i].drawStanding();
+            ducks[i].drawTail();
+        }
+        for (let i = 0; i < 1; i++) {
+            bushes[i].draw();
+        }
+        for (let i = 0; i < bees.length; i++) {
+            bees[i].move;
+            bees[i].draw();
+        }
+        for (let i = 0; i < birds.length; i++) {
+            birds[i].move();
+            birds[i].draw();
+            birds[i].drawFlying();
+        }
     }
     function drawBackground() {
-        console.log("Background");
+        //console.log("Background");
         let gradient = duckPond.crc2.createLinearGradient(0, 0, 0, duckPond.crc2.canvas.height);
         gradient.addColorStop(0, "lightblue");
         gradient.addColorStop(golden, "white");
         gradient.addColorStop(1, "green");
         duckPond.crc2.fillStyle = gradient;
         duckPond.crc2.fillRect(0, 0, duckPond.crc2.canvas.width, duckPond.crc2.canvas.height);
+        drawSun();
+        drawMountains();
+        drawTree(new duckPond.Vector(170, 265), 70, 20, 40);
+        drawLake();
+        drawHouse();
     }
-    function drawSun(_position) {
-        console.log("Sun", _position);
-        let r1 = 20;
-        let r2 = 120;
+    function drawSun() {
+        //console.log("Sun");
+        let r1 = 50;
+        let r2 = 150;
         let gradient = duckPond.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
         gradient.addColorStop(0, "HSLA(60, 100%, 80%, 1)");
         gradient.addColorStop(1, "HSLA(60, 100%, 50%, 0)");
         duckPond.crc2.save();
-        duckPond.crc2.translate(_position.x, _position.y);
+        duckPond.crc2.save();
         duckPond.crc2.fillStyle = gradient;
         duckPond.crc2.arc(0, 0, r2, 0, 2 * Math.PI);
         duckPond.crc2.fill();
     }
-    function drawCloud(_position, _size) {
-        console.log("Cloud", _position, _size);
-        let nParticles = 35; //Anzahl der Partikel
-        let radiusParticle = 40; //Radius einzelner Partikel
-        //Pfad erstellen
-        let particle = new Path2D();
-        let gradient = duckPond.crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
-        particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
-        gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
-        duckPond.crc2.save();
-        duckPond.crc2.translate(_position.x, _position.y);
-        duckPond.crc2.fillStyle = gradient;
-        for (let drawn = 0; drawn < nParticles; drawn++) {
-            duckPond.crc2.save();
-            let x = (Math.random() - 0.5) * _size.x; //Koordinatensystem verschieben - Zufallszahl zwischen -0.5 und 0.5
-            let y = (Math.random() * _size.y); //Zufallszahl zwischen 0 und 1
-            duckPond.crc2.translate(x, y); //Koordinatensystem an richtige Stelle schieben
-            duckPond.crc2.fill(particle);
-            duckPond.crc2.restore();
-        }
-        drawMountains();
-        drawTree(new duckPond.Vector(170, 265), 70, 20, 40);
-        drawLake();
-        drawBush();
-        drawHouse();
-    }
     function drawMountains() {
-        console.log("Mountains");
+        //console.log("Mountains");
         let color = "#aaaaaa";
         //Berg 1 zeichnen
         duckPond.crc2.save();
@@ -122,29 +163,6 @@ var duckPond;
         duckPond.crc2.fillStyle = "darkblue";
         duckPond.crc2.fill();
         duckPond.crc2.restore();
-    }
-    function drawBush() {
-        duckPond.crc2.save();
-        duckPond.crc2.beginPath();
-        duckPond.crc2.translate(0, 270);
-        duckPond.crc2.fillStyle = "green";
-        duckPond.crc2.beginPath();
-        duckPond.crc2.moveTo(0, 0);
-        duckPond.crc2.lineTo(10, -20);
-        duckPond.crc2.lineTo(40, -35);
-        duckPond.crc2.lineTo(60, -45);
-        duckPond.crc2.lineTo(80, -40);
-        duckPond.crc2.lineTo(100, -30);
-        duckPond.crc2.lineTo(110, -5);
-        duckPond.crc2.lineTo(100, 0);
-        duckPond.crc2.lineTo(80, 5);
-        duckPond.crc2.lineTo(60, 5);
-        duckPond.crc2.lineTo(40, 5);
-        duckPond.crc2.lineTo(10, 5);
-        duckPond.crc2.lineTo(0, 0);
-        duckPond.crc2.closePath();
-        duckPond.crc2.fill();
-        duckPond.crc2.restore;
     }
     function drawHouse() {
         duckPond.crc2.save();

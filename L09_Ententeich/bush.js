@@ -1,7 +1,7 @@
 "use strict";
 var duckPond;
 (function (duckPond) {
-    class bush {
+    class Bush {
         x;
         y;
         constructor(_x, _y) {
@@ -32,6 +32,6 @@ var duckPond;
             duckPond.crc2.restore;
         }
     }
-    duckPond.bush = bush;
+    duckPond.Bush = Bush;
 })(duckPond || (duckPond = {}));
 //# sourceMappingURL=bush.js.map

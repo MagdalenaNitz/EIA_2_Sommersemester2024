@@ -5,12 +5,12 @@ var duckPond;
         x;
         y;
         constructor(_x, _y) {
-            console.log("Cloud Constructor");
+            //console.log ("Cloud Constructor")
             this.x = _x;
             this.y = _y;
         }
         move() {
-            console.log("cloud move");
+            // console.log("cloud move");
             this.x += 1;
             if (this.x > duckPond.crc2.canvas.width) {
                 this.x = -50;
@@ -18,7 +18,7 @@ var duckPond;
         }
         draw(_position, _size) {
             console.log("Cloud", _position, _size);
-            let nParticles = 35; //Anzahl der Partikel
+            let nParticles = 30; //Anzahl der Partikel
             let radiusParticle = 40; //Radius einzelner Partikel
             //Pfad erstellen
             let particle = new Path2D();
@@ -41,4 +41,4 @@ var duckPond;
     }
     duckPond.Cloud = Cloud;
 })(duckPond || (duckPond = {}));
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=Cloud.js.map
