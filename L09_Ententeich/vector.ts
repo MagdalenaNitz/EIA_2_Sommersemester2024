@@ -3,23 +3,20 @@ namespace duckPond {
         x: number;
         y: number;
 
-        constructor(x: number, y: number) {
-            this.x = x;
-            this.y = y;
+        constructor(_x: number, _y: number) {
+            this.set(_x, _y);
         }
 
-        add(vector: Vector): void {
-            this.x += vector.x;
-            this.y += vector.y;
+        set(_x: number, _y: number): void {
+            this.x = _x;
+            this.y = _y;
         }
-
-        scale(scalar: number): void {
-            this.x *= scalar;
-            this.y *= scalar;
-        }
-
-        copy(): Vector {
-            return new Vector(this.x, this.y);
+       
+        normalize(): Vector {
+            let length = Math.sqrt (this.x * this.x + this.y * this.y);
+            this.x /= length;
+            this.y /= length;
+            return this;
         }
     }
 }

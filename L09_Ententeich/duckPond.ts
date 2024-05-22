@@ -46,12 +46,13 @@ namespace duckPond {
     
             let bush: Bush = new Bush (310, 220);
             console.log(bush);
+            bush.draw();
             bushes.push(bush);
     
             for (let i: number = 0; i<7; i++) {
                 let randomX = Math.random() * 2-1;
                 let randomY = Math.random() * 2-1;
-                let bee: Bee = new Bee (Math.random()* 500, Math.random()* 500, 0.5, new Vector(randomX, randomY));
+                let bee: Bee = new Bee (Math.random()* 500, Math.random()* 500, 0.5);
     
                 bees.push(bee);
             }
