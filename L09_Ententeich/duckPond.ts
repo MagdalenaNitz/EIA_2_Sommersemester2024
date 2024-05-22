@@ -4,89 +4,18 @@ namespace duckPond {
     export let crc2: CanvasRenderingContext2D;
     let golden: number = 0.62;
 
-    let clouds: Cloud[]= [];
-    let ducks: Duck[]= [];
-    let bushes: Bush[]= [];
-    let bees: Bee[]= [];
-    let birds: Bird[]= [];
-
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
             return;
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-        for (let i: number = 0; i<4; i++){
-            let cloud: Cloud = new Cloud(Math.random() * 200, Math.random()* 150); 
-            clouds.push(cloud);
-        }
-
-        for (let i: number = 0; i<6; i++){
-            let x = 100 + Math.random()* 200;
-            let y = 340 + Math.random()* 70;
-            let xTail = 70 + Math.random()* 70;
-            let yTail = 350 + Math.random()* 100;
-            let xStanding = 200 + Math.random()* 300;
-            let yStanding = 450 + Math.random()* 80;
-            let duck: Duck = new Duck (x, y, xStanding, yStanding, xTail, yTail, "lightbrown");
-            ducks.push(duck);
-        }
-
-        for(let i: number = 0; i<4; i++){
-            let randomX = Math.random()* 2 -1;
-            let randomY = 450 + Math.random() * 200;
-            let xFlying = 70 + Math.random() * 200;
-            let yFlying = 350 + Math.random() * 100;
-            let bird: Bird = new Bird (Math.random()* 200, randomY, xFlying, yFlying, 0.5, new Vector(randomX, 0));
-
-            if (randomY >= 400 && randomY <=600) {
-                birds.push(bird);
-            }
-        }
-
-        let bush: Bush = new Bush (310, 220);
-        console.log(bush);
-        bush.draw();
-        bushes.push(bush);
-
-        for (let i: number = 0; i<7; i++) {
-            let randomX = Math.random() * 2-1;
-            let randomY = Math.random() * 2-1;
-            let bee: Bee = new Bee (10, 600, "yellow");
-
-            bees.push(bee);
-        } 
-
         drawBackground();
-        setInterval(animate, 40);
-    }
-
-    function animate(): void {
-        console.log("animate");
-        drawBackground();
-        for (let i: number = 0; i<4; i++) {
-            clouds[i].move();
-            clouds[i].draw(new Vector(120, 45), new Vector(200, 70));
-        }
-        for (let i: number = 0; i<6; i++) {
-            ducks[i].move();
-            ducks[i].draw();
-            ducks[i].drawStanding();
-            ducks[i].drawTail();
-        }
-        for (let i: number = 0; i<1; i++) {
-            bushes[i].draw();
-        }
-        for (let i: number = 0; i<bees.length; i++) {
-            bees[i].move;
-            bees[i].draw();
-        }
-        for (let i: number = 0; i<birds.length; i++) {
-            birds[i].move();
-            birds[i].draw();
-            birds[i].drawFlying();
-        }
-
+        drawSun();
+        drawMountains();
+        drawTree(new Vector(170, 265), 70, 20, 40);
+        drawLake();
+        drawHouse();
     }
 
     
@@ -94,18 +23,12 @@ namespace duckPond {
         //console.log("Background");
 
         let gradient: CanvasGradient = crc2.createLinearGradient(0,0,0, crc2.canvas.height);
-        gradient.addColorStop(0, "blue");
+        gradient.addColorStop(0, "lightblue");
         gradient.addColorStop(golden, "white");
         gradient.addColorStop(1, "green")
 
         crc2.fillStyle = gradient; 
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-
-        drawSun();
-        drawMountains();
-        drawTree(new Vector(170, 265), 70, 20, 40);
-        drawLake();
-        drawHouse();
     }
 
     function drawSun(): void {
@@ -123,6 +46,7 @@ namespace duckPond {
         crc2.fillStyle = gradient;
         crc2.arc(0, 0, r2, 0, 2* Math.PI);
         crc2.fill();
+        crc2.restore();
     }
 
     function drawMountains(): void {
@@ -133,7 +57,6 @@ namespace duckPond {
         crc2.beginPath();
         crc2.translate(0,220);
         crc2.fillStyle = color;
-        crc2.beginPath();
         crc2.moveTo(-250, 0); 
         crc2.lineTo(390, 0);
         crc2.lineTo(390, -50); 
@@ -150,7 +73,6 @@ namespace duckPond {
         crc2.beginPath();
         crc2.translate(0,230);
         crc2.fillStyle = "grey";
-        crc2.beginPath();
         crc2.moveTo(-250, 0); 
         crc2.lineTo(390, 0);
         crc2.lineTo(390, -60); 

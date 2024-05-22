@@ -61,7 +61,7 @@ namespace Ententeich {
             clouds[i].move();
             clouds[i].draw();
         }
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i <=1; i++) {
             trees[i].draw();
         }
         for (let i: number = 0; i < 1; i++) {
@@ -69,8 +69,10 @@ namespace Ententeich {
         }
         ducks[0].draw();
         ducks[1].draw();
+        ducks[2].draw();
         ducks[0].move();
         ducks[1].move();
+        ducks[2].move();
 
         bees[0].draw();
         bees[0].move();
@@ -101,7 +103,7 @@ namespace Ententeich {
         crc2.save();
         crc2.beginPath();
         crc2.translate(0,220);
-        crc2.fillStyle = "darkgrey";
+        crc2.fillStyle = color;
         crc2.beginPath();
         crc2.moveTo(-250, 0); 
         crc2.lineTo(390, 0);
@@ -143,10 +145,10 @@ namespace Ententeich {
     }
     function drawLake(): void {
 
-        let centerX = 150;
-        let centerY = 350;
-        let radiusX = 190;
-        let radiusY = 80;
+        let centerX = 120;
+        let centerY = 320;
+        let radiusX = 170;
+        let radiusY = 60;
 
         crc2.save();
         crc2.beginPath();
