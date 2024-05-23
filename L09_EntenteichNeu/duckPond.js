@@ -34,6 +34,9 @@ var Ententeich;
         let duck4 = new Ententeich.Duck(-10, 600, "yellow");
         duck.draw();
         ducks.push(duck4);
+        let duck5 = new Ententeich.Duck(50, 650, "yellow");
+        duck.draw();
+        ducks.push(duck5);
         let bee = new Ententeich.Bee(10, 800, "yellow");
         bee.draw();
         bees.push(bee);
@@ -52,6 +55,12 @@ var Ententeich;
         let bird3 = new Ententeich.Bird(0, 90, "grey");
         bird.draw();
         birds.push(bird3);
+        let bird4 = new Ententeich.Bird(-20, 50, "grey");
+        bird.draw();
+        birds.push(bird4);
+        let bird5 = new Ententeich.Bird(50, 110, "grey");
+        bird.draw();
+        birds.push(bird5);
     }
     function animate() {
         drawBackground();
@@ -63,10 +72,12 @@ var Ententeich;
         ducks[1].draw();
         ducks[2].draw();
         ducks[3].draw();
+        ducks[4].draw();
         ducks[0].move();
         ducks[1].move();
         ducks[2].move();
         ducks[3].move();
+        ducks[4].move();
         bees[0].draw();
         bees[0].move();
         bees[1].draw();
@@ -84,6 +95,8 @@ var Ententeich;
         birds[2].move();
         birds[3].draw();
         birds[3].move();
+        birds[4].draw();
+        birds[4].move();
     }
     function drawBackground() {
         //console.log("Background");

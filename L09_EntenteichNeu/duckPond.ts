@@ -47,6 +47,10 @@ namespace Ententeich {
         duck.draw();
         ducks.push(duck4);
 
+        let duck5: Duck = new Duck (50, 650, "yellow");
+        duck.draw();
+        ducks.push(duck5);
+
         let bee: Bee = new Bee(10, 800, "yellow");
         bee.draw();
         bees.push(bee);
@@ -70,6 +74,14 @@ namespace Ententeich {
         let bird3: Bird = new Bird (0, 90, "grey");
         bird.draw();
         birds.push(bird3);
+
+        let bird4: Bird = new Bird (-20, 50, "grey");
+        bird.draw();
+        birds.push(bird4);
+
+        let bird5: Bird = new Bird (50, 110, "grey");
+        bird.draw();
+        birds.push(bird5);
     }
 
     function animate(): void {
@@ -84,10 +96,12 @@ namespace Ententeich {
         ducks[1].draw();
         ducks[2].draw();
         ducks[3].draw();
+        ducks[4].draw();
         ducks[0].move();
         ducks[1].move();
         ducks[2].move();
         ducks[3].move(); 
+        ducks[4].move();
         
         
 
@@ -110,6 +124,8 @@ namespace Ententeich {
         birds[2].move();
         birds[3].draw();
         birds[3].move();
+        birds[4].draw();
+        birds[4].move();
 
        }
 
