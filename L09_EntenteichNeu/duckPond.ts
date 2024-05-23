@@ -39,7 +39,7 @@ namespace Ententeich {
         duck.draw();
         ducks.push(duck2);
 
-        let duck3: Duck = new Duck (100, 550, "yellow");
+        let duck3: Duck = new Duck (100, 580, "yellow");
         duck.draw();
         ducks.push(duck3);
 
@@ -211,10 +211,10 @@ namespace Ententeich {
         
     function drawLake(): void {
 
-        let centerX = 195;
+        let centerX = 190;
         let centerY = 630;
-        let radiusX = 210;
-        let radiusY = 90;
+        let radiusX = 230;
+        let radiusY = 100;
 
         crc2.save();
         crc2.beginPath();
