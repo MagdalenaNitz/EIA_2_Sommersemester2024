@@ -2,7 +2,7 @@
 var Ententeich;
 (function (Ententeich) {
     window.addEventListener("load", handleLoad);
-    let middle = 0.50;
+    let middle = 0.45;
     let clouds = [];
     let bushes = [];
     let ducks = [];

@@ -3,7 +3,7 @@ namespace Ententeich {
 
     export let crc2: CanvasRenderingContext2D;
 
-    let middle: number = 0.50;
+    let middle: number = 0.45;
 
     let clouds: Cloud[] = [];
     let bushes: Bush[] = [];
