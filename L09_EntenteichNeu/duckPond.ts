@@ -4,13 +4,7 @@ namespace Ententeich {
     export let crc2: CanvasRenderingContext2D;
 
     let middle: number = 0.45;
-
-    let clouds: Cloud[] = [];
-    let bushes: Bush[] = [];
-    let ducks: Duck[] = [];
-    let bees: Bee[] = [];
-    let birds: Bird [] = [];
-    
+    let moveable: Moveable [] = [];
     
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -18,99 +12,93 @@ namespace Ententeich {
             return;
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-    
         for (let i: number = 0; i < 9; i++) {
             let cloud: Cloud = new Cloud(Math.random() * 200, 100 + Math.random() * 150);
-            clouds.push(cloud);
+            moveable.push(cloud);
         }
 
         let bush: Bush = new Bush(250, 610);
+            console.log (bush);
             bush.draw();
-            bushes.push(bush);
         
         drawBackground();
         setInterval(animate, 40);
 
         let duck: Duck = new Duck(10, 680, "yellow");
-        duck.draw();
-        ducks.push(duck);
+            //console.log (duck);
+            duck.draw();
+            moveable.push(duck);
 
         let duck2: Duck = new Duck(170, 610, "yellow");
-        duck.draw();
-        ducks.push(duck2);
+            //console.log (duck2);
+            duck.draw();
+            moveable.push(duck2);
 
         let duck3: Duck = new Duck (100, 580, "yellow");
-        duck.draw();
-        ducks.push(duck3);
+            //console.log (duck3);
+            duck.draw();
+            moveable.push(duck3);
 
         let duck4: Duck = new Duck (-10, 600, "yellow");
-        duck.draw();
-        ducks.push(duck4);
+            //console.log (duck4);
+            duck.draw();
+            moveable.push(duck4);
 
         let duck5: Duck = new Duck (50, 650, "yellow");
-        duck.draw();
-        ducks.push(duck5);
+            //console.log (duck5);
+            duck.draw();
+            moveable.push(duck5);
 
         let bee: Bee = new Bee(10, 800, "yellow");
-        bee.draw();
-        bees.push(bee);
+            //console.log (bee);
+            bee.draw();
+            moveable.push (bee);
 
         let bee2: Bee = new Bee(100, 550, "yellow");
-        bee.draw();
-        bees.push(bee2);
+            //console.log (bee2);
+            bee.draw();
+            moveable.push (bee2);
 
         let bee3: Bee = new Bee(200, 400, "yellow");
-        bee.draw();
-        bees.push(bee3);
+            //console.log (bee3);
+            bee.draw();
+            moveable.push (bee3);
         
         let bird: Bird = new Bird (100, 100, "grey");
-        bird.draw();
-        birds.push(bird);
+            //console.log (bird);
+            bird.draw();
+            moveable.push (bird);
 
         let bird2: Bird = new Bird (150, 150, "grey");
-        bird.draw();
-        birds.push(bird2);
+            //console.log (bird2);
+            bird.draw();
+            moveable.push (bird2);
 
         let bird3: Bird = new Bird (0, 90, "grey");
-        bird.draw();
-        birds.push(bird3);
+            //console.log (bird3);
+            bird.draw();
+            moveable.push (bird3);
 
         let bird4: Bird = new Bird (-20, 50, "grey");
-        bird.draw();
-        birds.push(bird4);
+            //console.log (bird4);
+            bird.draw();
+            moveable.push (bird4);
 
         let bird5: Bird = new Bird (50, 110, "grey");
-        bird.draw();
-        birds.push(bird5);
+            //console.log (bird5);
+            bird.draw();
+            moveable.push (bird5);
     }
 
     function animate(): void {
         drawBackground();
-        for (let i: number = 0; i < 4; i++) {
-            clouds[i].move();
-            clouds[i].draw();
-        }
 
-       for (let duck of ducks) {
-        duck.move ();
-        duck.draw();
-       }
-        
-       for (let bee of bees) {
-        bee.move();
-        bee.draw();
-       }
-       
-        for (let i: number = 0; i < 1; i++) {
-            bushes[i].draw();
+        for (let i: number = 0; i < moveable.length; i++) {
+            moveable [i].move();
+            moveable [i].draw();
         }
-        
-        for (let bird of birds) {
-            bird.move();
-            bird.draw();
        }
-
-        
+ 
     function drawBackground(): void {
     //console.log("Background");
     
@@ -242,4 +230,3 @@ namespace Ententeich {
     }
     
 }
-

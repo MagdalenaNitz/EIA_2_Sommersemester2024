@@ -1,11 +1,11 @@
 namespace Ententeich {
-    export class Cloud {
-        x: number;
-        y: number;
+    export class Cloud extends Moveable {
 
         constructor(_x: number, _y: number) {
-            this.x = _x;
-            this.y = _y;
+
+            let cloudColor: string = "white";
+            crc2.fillStyle = cloudColor;
+            super (_x, _y, cloudColor);
         }
 
         move() {
@@ -28,8 +28,6 @@ namespace Ententeich {
             crc2.ellipse(170, 0, 50, 30, 0, Math.PI, 0, false);
             crc2.closePath();
 
-            let cloudColor: string = "white";
-            crc2.fillStyle = cloudColor;
             crc2.fill();
 
             crc2.restore();

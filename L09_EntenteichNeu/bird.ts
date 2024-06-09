@@ -1,15 +1,8 @@
 namespace Ententeich {
-    export class Bird {
-        x: number;
-        y: number;
-        color: string;
+    export class Bird extends Moveable {
 
         constructor(_x: number, _y: number, _color: string) {
-            this.x = _x;
-            this.y = _y;
-            this.color = _color;
-
-            this.draw();
+            super(_x, _y, "grey")
         }
 
         move() {

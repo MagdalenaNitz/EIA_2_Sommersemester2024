@@ -1,12 +1,11 @@
 "use strict";
 var Ententeich;
 (function (Ententeich) {
-    class Cloud {
-        x;
-        y;
+    class Cloud extends Ententeich.Moveable {
         constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
+            let cloudColor = "white";
+            Ententeich.crc2.fillStyle = cloudColor;
+            super(_x, _y, cloudColor);
         }
         move() {
             this.x += 1;
@@ -24,8 +23,6 @@ var Ententeich;
             Ententeich.crc2.ellipse(100, 0, 60, 60, 0, Math.PI, 0, false);
             Ententeich.crc2.ellipse(170, 0, 50, 30, 0, Math.PI, 0, false);
             Ententeich.crc2.closePath();
-            let cloudColor = "white";
-            Ententeich.crc2.fillStyle = cloudColor;
             Ententeich.crc2.fill();
             Ententeich.crc2.restore();
         }

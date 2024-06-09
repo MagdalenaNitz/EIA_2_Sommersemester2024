@@ -1,18 +1,12 @@
 namespace Ententeich {
-    export class Bee {
-        x: number;
-        y: number;
-        color: string;
+
+    export class Bee extends Moveable {
 
         constructor(_x: number, _y: number, _color: string) {
-            this.x = _x;
-            this.y = _y;
-            this.color = _color;
-
-            this.draw();
+           super (_x, _y, "yellow");
         }
 
-        move() {
+        move(): void {
             this.x += 1;
             this.y += Math.sin (this.x * 0.05 * 2) -1;
             if (this.x > crc2.canvas.width) {
@@ -53,12 +47,12 @@ namespace Ententeich {
             // Flügel
             crc2.beginPath();
             crc2.fillStyle = "rgba(255, 255, 255, 0.6)";
-            crc2.ellipse(0, -5, 3, 8, Math.PI / 4, 0, 2 * Math.PI);
+            crc2.ellipse(0, -5, 3, 8, - Math.PI / 4, 0, 2 * Math.PI);
             crc2.fill();
             crc2.closePath();
 
             crc2.beginPath();
-            crc2.ellipse(0, 5, 3, 8, -Math.PI / 4, 0, 2 * Math.PI);
+            crc2.ellipse(0, 5, 3, 8, Math.PI / 4, 0, 2 * Math.PI);
             crc2.fill();
             crc2.closePath();
 
