@@ -91,42 +91,23 @@ namespace Ententeich {
             clouds[i].draw();
         }
 
+       for (let duck of ducks) {
+        duck.move ();
+        duck.draw();
+       }
+        
+       for (let bee of bees) {
+        bee.move();
+        bee.draw();
+       }
        
-        ducks[0].draw();
-        ducks[1].draw();
-        ducks[2].draw();
-        ducks[3].draw();
-        ducks[4].draw();
-        ducks[0].move();
-        ducks[1].move();
-        ducks[2].move();
-        ducks[3].move(); 
-        ducks[4].move();
-        
-        
-
-        bees[0].draw();
-        bees[0].move();
-        bees[1].draw();
-        bees[1].move();
-        bees[2].draw();
-        bees[2].move();
-
         for (let i: number = 0; i < 1; i++) {
             bushes[i].draw();
         }
         
-        birds[0].draw();
-        birds[0].move();
-        birds[1].draw();
-        birds[1].move();
-        birds[2].draw();
-        birds[2].move();
-        birds[3].draw();
-        birds[3].move();
-        birds[4].draw();
-        birds[4].move();
-
+        for (let bird of birds) {
+            bird.move();
+            bird.draw();
        }
 
         
